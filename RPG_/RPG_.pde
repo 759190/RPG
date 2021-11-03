@@ -7,22 +7,70 @@ final int GAMEOVER=3;
  boolean mouseReleased;
  boolean wasPressed;
  
-color darkGreen=#555936;
-color midGreen=#637343;
-color green=#A2A633;
-color orange=#F2B138;
-color yellow=#F2CD5C;
+color black=#1F1F20;
+color darkBlue=#2B4C7E;
+color blue=#567EBB;
+color grey=#606D80;
+color indigo=#090F27;
+color lightGrey=#DCE0E6;
+
+boolean upkey,downkey,leftkey,rightkey,spacekey;
+
  
 Button button1;
 AnimatedGIF myGIF;
 
+Hero myHero;
+
+//Image
+PImage map;
+color northRoom, eastRoom, southRoom, westRoom;
+
+//game objects
+ArrayList<GameObject> myObjects;
+ArrayList<Darkness> dark;
+
+//Darkness dark;
+
 void setup () {
   size(800,600);
-   button1=new Button ("START",width/2,350,250,100,midGreen,green); //start button
-   myGIF=new AnimatedGIF(35, "frame_","_delay-0.03s.gif",0,0,width,height); //intro gif
+  //create objects
+  myObjects=new ArrayList<GameObject>(1000);
+  myHero=new Hero();
+  myObjects.add(myHero);
+  
+  
+   
+ 
+   button1=new Button ("START",width/2,350,250,100,blue,darkBlue); //start button
+   myGIF=new AnimatedGIF(5, 27, "frame_","_delay-0.1s.gif",0,0,width,height); //intro gif
+  map=loadImage("Map.png");
+  
+  //create darkness
+  
+  dark=new ArrayList<Darkness>(1000);
+  int size=6;
+  int x=0,y=0;
+  int i=0;
+  while (i<14500) {
+   dark.add(new Darkness(x,y,size));
+x=x+size;
+if (x>width) {
+  x=0;
+y=y+size;
+}
+
+ i++;
+
+
+}
 }
 
 void draw() {
+  
+
+
+  
    
   
  

@@ -24,7 +24,7 @@ class Button {
     } else {
       fill(normal);
     }
-    stroke(darkGreen);
+    stroke(black);
     strokeWeight(6);
     rect(x, y, w, h, 30);
 
