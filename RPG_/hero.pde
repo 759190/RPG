@@ -26,24 +26,24 @@ class Hero extends GameObject  {
     println(roomx);
   
     //moving the hero
-if (upkey) {
+if (wkey) {
     velocity.y=-speed;
 }
-if (downkey) {
+if (skey) {
   velocity.y=speed;
 }
-if (leftkey) {
+if (akey) {
   velocity.x=-speed;
 }
-if (rightkey){
+if (dkey){
   velocity.x=speed;
 }
 if(velocity.mag()>speed) 
 velocity.setMag(speed);
 
 
-if(!upkey&&!downkey) velocity.y=velocity.y*0.75;
-if(!leftkey&&!rightkey) velocity.x=velocity.x*0.75;
+if(!wkey&&!skey) velocity.y=velocity.y*0.75;
+if(!akey&&!dkey) velocity.x=velocity.x*0.75;
 
 //check exits
 //north

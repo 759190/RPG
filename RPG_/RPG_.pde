@@ -14,7 +14,7 @@ color grey=#606D80;
 color indigo=#090F27;
 color lightGrey=#DCE0E6;
 
-boolean upkey,downkey,leftkey,rightkey,spacekey;
+boolean spacekey,akey,skey,wkey,dkey;
 
  
 Button button1;
