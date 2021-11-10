@@ -19,7 +19,7 @@ class Weapon extends GameObject {
   }
   void shoot() {
    if (shotTimer>=threshold) {
-   PVector aimVector= new PVector(mouseX-myHero.location.x,mouseY-myHero.location.y); 
+PVector aimVector= new PVector(mouseX-myHero.location.x,mouseY-myHero.location.y); 
        aimVector.setMag(bulletSpeed);
      myObjects.add(new Bullet(10,indigo,aimVector)); //(aimVector,blue,10)
        shotTimer=0;

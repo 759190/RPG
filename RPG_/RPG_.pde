@@ -38,6 +38,7 @@ void setup () {
   myObjects=new ArrayList<GameObject>(1000);
   myHero=new Hero();
   myObjects.add(myHero);
+  myObjects.add(new Enemy());
   
   
    

@@ -42,14 +42,17 @@ void drawGameObjects() {
   int i=0;
   while(i<myObjects.size()) {
     GameObject obj =myObjects.get(i);
+   if(obj.roomx==myHero.roomx && obj.roomy==myHero.roomy) {
     obj.show();
     obj.act();
+   } // --------------- this brace only works if it is there?
     if (obj.hp<=0) {
       myObjects.remove(i);
     }else{
       i++;
     
-  }
+     }
+
 }
 }
 void drawRoom() {

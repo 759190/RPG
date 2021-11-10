@@ -1,6 +1,7 @@
 //game object
 
 class GameObject {
+  int roomx,roomy;
   int size;
   PVector location;
   PVector velocity;
