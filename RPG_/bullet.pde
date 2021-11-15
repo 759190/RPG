@@ -2,7 +2,6 @@ class Bullet extends GameObject {
  
   int timer;
  color Bcolour; //bullet color 
-int size;
     
   Bullet(int s,color bc, PVector av) { //size, bullet colour
    timer=100;

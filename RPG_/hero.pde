@@ -1,28 +1,49 @@
 
 class Hero extends GameObject  {
-  
+   //immunity timer
   float speed;
   Weapon myWeapon;
   
   Hero() {
     super();
-    hp=1;
+    hp=100;
     speed=5;
     roomx=1;
     roomy=1;
     myWeapon=new Weapon();
+    size=50;
+  
   }
   
   void show() {
     fill(lightGrey);
     strokeWeight(4);
-   stroke(grey);
-    circle(location.x,location.y,50);  
+   stroke(0);
+    circle(location.x,location.y,size); 
+    fill(255);
+    textSize(20);
+     fill(0);
+     text(hp, location.x,location.y); // hp counter
+      
+    
+   
+   
+  
   }
   
   void act() {
     super.act();
-    println(roomx);
+    
+   
+ 
+     
+   
+   
+   
+    
+    
+    
+    //---------------------
   
     //moving the hero
 if (wkey) {
