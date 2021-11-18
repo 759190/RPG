@@ -19,7 +19,7 @@ class ShotGun extends Weapon {
   }
   void shoot() {
     if (shotTimer>=threshold) {
-     for(int i=0;i<15;i++) {
+     for(int i=0;i<35;i++) {
    PVector aimVector= new PVector(mouseX-myHero.location.x,mouseY-myHero.location.y); 
        aimVector.rotate(random(-PI,PI));
        aimVector.setMag(bulletSpeed);

@@ -1,5 +1,6 @@
 void intro() {
  rectMode(CENTER);
+ textFont(creepy);
   noStroke();
   fill(blue);
   rect(width/2,height/2,width,height);

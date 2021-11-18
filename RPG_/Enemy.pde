@@ -7,15 +7,26 @@ class Enemy extends GameObject {
     roomx=1;
     roomy=1;
     size=50;
-      Itimer=0;
+    Itimer=0;
   
   }
-  Enemy(int hitp, int s, int x, int y) {
-   location=new PVector(300,400);
+  
+   Enemy(int rx, int ry) {
+    location=new PVector(300,200);
+    velocity=new PVector(0,0);
+    hp=100;
+    roomx=rx;
+    roomy=ry;
+    size=50;
+    Itimer=0;
+  
+  }
+  Enemy(int hitp, int s, int rx, int ry ) {
+   location=new PVector(150,300);
     velocity=new PVector(0,0); 
     hp=hitp;
-    roomx=x;
-    roomy=y;
+    roomx=rx;
+    roomy=ry;
     size=s; 
       Itimer=0;
    

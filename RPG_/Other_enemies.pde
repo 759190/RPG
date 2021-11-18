@@ -1,18 +1,20 @@
-class FolShooter extends Enemy {
+class FolShooter extends Enemy { //follower shooter
  int FStimer;
-  FolShooter(int x, int y) {
-     super(100,50,x,y); 
+  FolShooter(int rx, int ry) {
+     super(150,60,rx,ry);  //hp, size, roomx, roomy 
      FStimer=0;
   }
   void show() {
-    circle(150,height/2,60);
+    circle(150,height/2,size);
    FStimer=FStimer+1;
+   fill(lightGrey);
+   //text(hp,150,300);
   }
   
   void act() {
    super.act();
    while (FStimer==100) {
-      myObjects.add(new Follower(1,2,20));
+      myObjects.add(new Follower(roomx,roomy,30)); // roomx, roomy size
       FStimer=0;
    }
    
@@ -20,17 +22,16 @@ class FolShooter extends Enemy {
   }
 }
 
-
-
 //------------------------------------------------------------------------
 class Follower extends Enemy {
   int  Timer;
-  Follower(int x, int y) {
-   super(100,50,x,y);  //hp, size, roomx, roomy 
+  Follower(int rx, int ry) {
+   super(100,50,rx,ry);  //hp, size, roomx, roomy 
    Timer=180;
+    location=new PVector(width/2,height/2);
   }
-Follower(int x, int y, int s) {
-   super(15,30,x,y);  //hp, size, roomx, roomy 
+Follower(int rx, int ry, int s) { // for follower shooter
+   super(15,s,rx,ry);  //hp, size, roomx, roomy 
    Timer=180;
    location=new PVector(150,height/2);
    s=size;
@@ -44,8 +45,8 @@ Follower(int x, int y, int s) {
     text(hp,location.x,location.y);
     
      
-     //immunity timer
-     Timer= Timer+1;
+   //immunity timer
+   Timer= Timer+1;
     
   if (Timer<180) {
     noFill();
@@ -59,7 +60,7 @@ Follower(int x, int y, int s) {
     velocity=new PVector(myHero.location.x-location.x,myHero.location.y-location.y);
     velocity.setMag(1);
     
-    
+  //collision code  
     if (Timer>180) {
    int j=0;
     while(j<myObjects.size()) {
