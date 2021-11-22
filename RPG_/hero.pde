@@ -27,25 +27,36 @@ class Hero extends GameObject  {
     textSize(20);
      fill(0);
      text(hp, location.x,location.y); // hp counter
-      
-    
-   
-   
+  
   
   }
   
   void act() {
     super.act();
     
-   
- 
+
+   int j=0;
+    while(j<myObjects.size()) {
+     GameObject obj =myObjects.get(j);
+    if(obj instanceof DroppedItem && isCollidingWith(obj)) {
+
+    
+   DroppedItem item=(DroppedItem)obj;
+   if(item.type==GUN) {
+     myWeapon=item.w;
+     item.hp=0;
+   }
+    }
+    j++;
+    } 
      
    
    
    
     
     
-    
+ myWeapon.update();
+  if (spacekey) myWeapon.shoot();    
     //---------------------
   
     //moving the hero
@@ -86,9 +97,8 @@ location=new PVector(125,height/2);
 roomx--;
 location=new PVector(width-120,height/2);
   } 
-  myWeapon.update();
-  if (spacekey) myWeapon.shoot();
+ 
 
-  
+ 
   }
 }

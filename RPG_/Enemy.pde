@@ -54,38 +54,30 @@ class Enemy extends GameObject {
   }
   void act() {
     super.act();
-    
+  
+     //if hero hits enemy
     if (Itimer>180) {
    int j=0;
     while(j<myObjects.size()) {
      GameObject obj =myObjects.get(j);
-   if(obj instanceof Hero) {
-   float d = dist(obj.location.x,obj.location.y,location.x,location.y);
-   
-   if(d<=size/2+obj.size/2) {  
+    if(obj instanceof Hero && isCollidingWith(obj)) {
    obj.hp=obj.hp-1;
-    Itimer=0;
-   }
+    Itimer=0; 
    }
     j++;
     } 
  } 
     
-    
-    
-    
-    
-    
-    
+
     //if bullet hits enemy
       int i=0;
     while(i<myObjects.size()) {
      GameObject obj =myObjects.get(i);
-   if(obj instanceof Bullet) {
-   float d = dist(obj.location.x,obj.location.y,location.x,location.y);
-   if(d<=size/2+obj.size/2) {
+   if(obj instanceof Bullet && isCollidingWith(obj)) {
      hp=hp- int (obj.velocity.mag()); //((Bullet) obj).damage;
      obj.hp=0;
+   if (hp<=0) {
+    myObjects.add(new DroppedItem(location.x,location.y,roomx,roomy));
    }
    }
     i++;

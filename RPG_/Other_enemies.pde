@@ -17,6 +17,16 @@ class FolShooter extends Enemy { //follower shooter
       myObjects.add(new Follower(roomx,roomy,30)); // roomx, roomy size
       FStimer=0;
    }
+      
+       int j=0;
+    while(j<myObjects.size()) {
+     GameObject obj =myObjects.get(j);
+  if(obj instanceof Hero && isCollidingWith(obj)) {
+   obj.hp=0;
+   }
+    j++;
+    } 
+   
    
    
   }
@@ -57,6 +67,7 @@ Follower(int rx, int ry, int s) { // for follower shooter
   }
   void act() {
     super.act();
+    
     velocity=new PVector(myHero.location.x-location.x,myHero.location.y-location.y);
     velocity.setMag(1);
     
@@ -65,13 +76,9 @@ Follower(int rx, int ry, int s) { // for follower shooter
    int j=0;
     while(j<myObjects.size()) {
      GameObject obj =myObjects.get(j);
-   if(obj instanceof Hero) {
-   float d = dist(obj.location.x,obj.location.y,location.x,location.y);
-   
-   if(d<=size/2+obj.size/2) {  
+  if(obj instanceof Hero && isCollidingWith(obj)) {
    obj.hp=obj.hp-1;
      Timer=0;
-   }
    }
     j++;
     } 

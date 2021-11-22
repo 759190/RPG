@@ -5,6 +5,8 @@ void intro() {
   fill(blue);
   rect(width/2,height/2,width,height);
  
+ 
+ 
  //gif
   myGIF.show();
   

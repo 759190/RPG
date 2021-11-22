@@ -4,6 +4,14 @@ final int GAME=1;
 final int PAUSE=2;
 final int GAMEOVER=3;
 
+//setting dropped item types
+final int HEALTH=0;
+final int GUN=1;
+final int POWERUP=2;
+
+
+
+
  boolean mouseReleased;
  boolean wasPressed;
  
@@ -23,6 +31,7 @@ boolean spacekey,akey,skey,wkey,dkey;
 int x,y;
  
 Button button1;
+Button button2;
 AnimatedGIF myGIF;
 
 Hero myHero;
@@ -41,7 +50,7 @@ void setup () {
   size(800,600);
   creepy=createFont("creepy.ttf", 200); //font
 
-  //create objects
+  //create objectsX
   myObjects=new ArrayList<GameObject>(1000);
   myHero=new Hero();
   myObjects.add(myHero);
@@ -55,6 +64,7 @@ void setup () {
    
  
    button1=new Button ("START",width/2,350,250,100,blue,darkBlue); //start button
+   button2=new Button ("TRY AGAIN",width/2,450,270,120,blue,darkBlue); //start button
    myGIF=new AnimatedGIF(5, 27, "frame_","_delay-0.1s.gif",0,0,width,height); //intro gif
   map=loadImage("Map.png");
   
