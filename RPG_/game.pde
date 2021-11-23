@@ -45,7 +45,7 @@ void drawGameObjects() {
   int i=0;
   while(i<myObjects.size()) {
     GameObject obj =myObjects.get(i);
-   if(obj.roomx==myHero.roomx && obj.roomy==myHero.roomy) { //Should be able to replace (inRoomWith(obj))
+    if (obj.inRoomWith(myHero)) {
     obj.show();
     obj.act();
    } // --------------- this brace only works if it is there?
