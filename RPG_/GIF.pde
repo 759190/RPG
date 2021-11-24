@@ -9,12 +9,12 @@ class AnimatedGIF  {
   
   //constructor
     
-   AnimatedGIF (int nf, String pre, String post) { //number of frames (temperary variable)
+   AnimatedGIF (int r, int nf, String pre, String post) { //number of frames (temperary variable)
   x=width/2;
   y=height/2;
   w=width;
   h=height;
-  rate=1;
+  rate=r;
   
   numFrames=nf;
    pics=new PImage[numFrames];
@@ -43,6 +43,11 @@ class AnimatedGIF  {
    currentFrame=0;  
    }
 
+void show (float _x, float _y, float _w, float _h) {
+  if (currentFrame >= pics.length) currentFrame = 0;
+    image(pics[currentFrame], _x,_y,_w,_h);
+    if (frameCount % rate == 0) currentFrame++;
+}
    
    //behaviour
 void show () {

@@ -29,16 +29,12 @@ class DroppedItem extends GameObject {
      type=POWERUP; 
      c=lightGrey;
     }
-    // //TEST ZONE -------------------------------------
-//type=GUN; //
-//w=new ShotGun(); //
 hp=1;
 location=new PVector(x,y);
 velocity=new PVector(0,0);
 size=30;
 roomx=rx;
 roomy=ry;
-//c=black; //
   }
   
   void show() {

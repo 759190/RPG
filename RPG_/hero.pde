@@ -3,6 +3,8 @@ class Hero extends GameObject  {
    //immunity timer
   float speed;
   Weapon myWeapon;
+  AnimatedGIF currentAction;
+  int whichCat;
   
   Hero() {
     super();
@@ -10,24 +12,37 @@ class Hero extends GameObject  {
     speed=5;
     roomx=1;
     roomy=1;
+    whichCat=3;
+    
+    if (whichCat==1) {
+    currentAction = orangeStill;
+    }
+    if (whichCat==2) {
+    currentAction = whiteStill;   
+    }
+    if (whichCat==3) {
+    currentAction = blackStill;   
+    }
+    
  // myWeapon=new Weapon();
  myWeapon=new AutoPistol();
  //myWeapon=new SniperRifle();
  // myWeapon=new ShotGun();
-    size=50;
+    size=80;
   
   }
   
   void show() {
-    fill(lightGrey);
-    strokeWeight(4);
-   stroke(0);
-    circle(location.x,location.y,size); 
-    fill(255);
-    textSize(20);
-     fill(0);
-     text(hp, location.x,location.y); // hp counter
-  
+   // fill(lightGrey);
+ 
+
+   // circle(location.x,location.y,size); 
+   // fill(255);
+   textSize(20);
+    fill(0);
+   text(hp, location.x,location.y-50); // hp counter
+     strokeWeight(4);
+  currentAction.show(location.x-40,location.y-45,size,size);
   
   }
   
@@ -62,15 +77,54 @@ class Hero extends GameObject  {
     //moving the hero
 if (wkey) {
     velocity.y=-speed;
+     if (whichCat==1) {
+   currentAction = orangeUp;
+    }
+    if (whichCat==2) {
+    currentAction = whiteUp;  
+    }
+    if (whichCat==3) {
+     currentAction = blackUp; 
+    }
 }
 if (skey) {
   velocity.y=speed;
+   if (whichCat==1) {
+   currentAction = orangeDown;
+    }
+    if (whichCat==2) {
+    currentAction = whiteDown;  
+    }
+    if (whichCat==3) {
+     currentAction = blackDown; 
+    }
 }
+
 if (akey) {
   velocity.x=-speed;
+  
+   if (whichCat==1) {
+   currentAction = orangeLeft;
+    }
+    if (whichCat==2) {
+    currentAction = whiteLeft;  
+    }
+    if (whichCat==3) {
+     currentAction = blackLeft; 
+    }
 }
 if (dkey){
   velocity.x=speed;
+
+   if (whichCat==1) {
+   currentAction = orangeRight;
+    }
+    if (whichCat==2) {
+    currentAction = whiteRight;  
+    }
+    if (whichCat==3) {
+     currentAction = blackRight; 
+    }
 }
 if(velocity.mag()>speed) 
 velocity.setMag(speed);

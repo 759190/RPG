@@ -5,6 +5,8 @@ class FolShooter extends Enemy { //follower shooter
      FStimer=0;
   }
   void show() {
+    strokeWeight(4);
+    fill(black);
     circle(150,height/2,size);
    FStimer=FStimer+1;
    fill(lightGrey);

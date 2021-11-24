@@ -1,5 +1,6 @@
 class Enemy extends GameObject {
   int Itimer;
+  int fifty;
   Enemy() {
     location=new PVector(300,200);
     velocity=new PVector(0,0);
@@ -77,8 +78,13 @@ class Enemy extends GameObject {
      hp=hp- int (obj.velocity.mag()); //((Bullet) obj).damage;
      obj.hp=0;
    if (hp<=0) {
+     // ------------ Controls frequency of drops
+    fifty=int (random(0,2));
+    if (fifty==0) {
     myObjects.add(new DroppedItem(location.x,location.y,roomx,roomy));
+    }
    }
+   //--------------- Controls frequency of drops
    }
     i++;
     } 
