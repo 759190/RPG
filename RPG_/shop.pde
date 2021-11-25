@@ -4,24 +4,24 @@ void shop() {
  textSize(50);
  text("$", width/2-30,50);
  text(myHero.money, width/2,50);
-  AnimatedGIF ShopCat1;
-  AnimatedGIF ShopCat2;
-  AnimatedGIF ShopCat3;
-  ShopCat1=blackStill;
-  ShopCat2=orangeStill;
-  ShopCat3=whiteStill;
  
  // back to game button
  click();  
  button3.show();
- if (button3.clicked)mode=GAME;
  button4.show();
  button5.show();
  button6.show();
+ if (button3.clicked) mode=GAME;
+ if (button4.clicked)whichCat=3;
+ if (button5.clicked)whichCat=1;
+ if (button6.clicked)whichCat=2;
+
+ //orange1 white2 black3
  
-  ShopCat1.show(100,200,200,200);
-  ShopCat2.show(300,200,200,200);
-  ShopCat3.show(500,200,200,200);
+ 
+  blackStill.show(100,200,200,200);
+  orangeStill.show(300,200,200,200);
+  whiteStill.show(500,200,200,200);
 
 
 }

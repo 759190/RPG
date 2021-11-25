@@ -10,6 +10,8 @@ final int HEALTH=0;
 final int GUN=1;
 final int COIN=2;
 
+int whichCat;
+
 
 boolean mouseReleased;
 boolean wasPressed;

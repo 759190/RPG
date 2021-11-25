@@ -3,7 +3,7 @@ class Hero extends GameObject  {
   float speed;
   Weapon myWeapon;
   AnimatedGIF currentAction;
-  int whichCat;
+  //int whichCat;
   
   Hero() {
     super();
@@ -11,7 +11,7 @@ class Hero extends GameObject  {
     speed=5;
     roomx=1;
     roomy=1;
-    whichCat=1;
+    whichCat=3;
     
     if (whichCat==1) {
     currentAction = orangeStill;
@@ -67,15 +67,7 @@ class Hero extends GameObject  {
  myWeapon.update();
   if (spacekey) myWeapon.shoot();    
     //---------------------
-  if (onekey) {
-   whichCat=1; 
-  }
-   if (twokey) {
-   whichCat=2; 
-  }
-   if (threekey) {
-   whichCat=3; 
-  }
+ 
     //moving the hero
 if (wkey) {
     velocity.y=-speed;
