@@ -1,6 +1,5 @@
 
 class Hero extends GameObject  {
-   //immunity timer
   float speed;
   Weapon myWeapon;
   AnimatedGIF currentAction;
@@ -12,7 +11,7 @@ class Hero extends GameObject  {
     speed=5;
     roomx=1;
     roomy=1;
-    whichCat=3;
+    whichCat=1;
     
     if (whichCat==1) {
     currentAction = orangeStill;
@@ -24,8 +23,8 @@ class Hero extends GameObject  {
     currentAction = blackStill;   
     }
     
- // myWeapon=new Weapon();
- myWeapon=new AutoPistol();
+  myWeapon=new Weapon();
+ //myWeapon=new AutoPistol();
  //myWeapon=new SniperRifle();
  // myWeapon=new ShotGun();
     size=80;
@@ -33,17 +32,13 @@ class Hero extends GameObject  {
   }
   
   void show() {
-   // fill(lightGrey);
- 
-
-   // circle(location.x,location.y,size); 
-   // fill(255);
-   textSize(20);
     fill(0);
+     textSize(30);
+    //text(money, 700,50); //money counter
+     textSize(20);
    text(hp, location.x,location.y-50); // hp counter
      strokeWeight(4);
   currentAction.show(location.x-40,location.y-45,size,size);
-  
   }
   
   void act() {
@@ -54,8 +49,7 @@ class Hero extends GameObject  {
     while(j<myObjects.size()) {
      GameObject obj =myObjects.get(j);
     if(obj instanceof DroppedItem && isCollidingWith(obj)) {
-
-    
+ 
    DroppedItem item=(DroppedItem)obj;
    if(item.type==GUN) {
      myWeapon=item.w;
@@ -73,7 +67,15 @@ class Hero extends GameObject  {
  myWeapon.update();
   if (spacekey) myWeapon.shoot();    
     //---------------------
-  
+  if (onekey) {
+   whichCat=1; 
+  }
+   if (twokey) {
+   whichCat=2; 
+  }
+   if (threekey) {
+   whichCat=3; 
+  }
     //moving the hero
 if (wkey) {
     velocity.y=-speed;

@@ -79,7 +79,7 @@ Follower(int rx, int ry, int s) { // for follower shooter
     while(j<myObjects.size()) {
      GameObject obj =myObjects.get(j);
   if(obj instanceof Hero && isCollidingWith(obj)) {
-   obj.hp=obj.hp-1;
+   obj.hp=obj.hp-5;
      Timer=0;
    }
     j++;

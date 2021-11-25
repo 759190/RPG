@@ -2,8 +2,8 @@ void game() {
   drawRoom();
   drawGameObjects();
  if (myHero.hp<=0) mode=GAMEOVER;
- 
- 
+ if (myHero.hp>=100) myHero.hp=100;
+ if (pkey) mode=SHOP;
 
   
 int i=0;
@@ -12,9 +12,13 @@ int i=0;
     da.show();
     da.act();
       i++;
+   
     
   }
   drawMiniMap();
+     
+ //     click();  
+ //button3.show();
 }
 
 void drawMiniMap() {

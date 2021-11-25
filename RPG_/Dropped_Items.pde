@@ -4,8 +4,10 @@ class DroppedItem extends GameObject {
   Weapon w; 
   color c;
   
+  
   DroppedItem (float x, float y, int rx, int ry) {
     // TEST ZONE -------------------------------------
+
    randomType=int (random(0,3));
     if (randomType==0) {
       type=GUN;
@@ -26,8 +28,8 @@ class DroppedItem extends GameObject {
       c=blue;
     }
     if (randomType==2) {
-     type=POWERUP; 
-     c=lightGrey;
+     type=COIN; 
+     c=yellow;
     }
 hp=1;
 location=new PVector(x,y);
@@ -56,9 +58,9 @@ roomy=ry;
      text("AP",location.x,location.y); 
      }
     }
-     if (type==POWERUP) {
+     if (type==COIN) {
      fill(255);
-      text("P",location.x,location.y); 
+      text("$",location.x,location.y); 
      }
      if(type==HEALTH) {
      fill(255);
@@ -75,6 +77,8 @@ roomy=ry;
  hp=0;
    if (randomType==1) {
    myHero.hp= myHero.hp+10; 
+   }else if (randomType==2) {
+   myHero.money=myHero.money+5;
    }
   }
     j++;

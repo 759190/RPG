@@ -7,12 +7,14 @@ class GameObject {
   PVector velocity;
   
   int hp;
+  int money;
   
   
   GameObject() {
     location=new PVector(width/2,height/2);
     velocity=new PVector(0,0);
     hp=1;
+    money=0;
     
   }
   

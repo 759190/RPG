@@ -8,7 +8,7 @@ class Enemy extends GameObject {
     roomx=1;
     roomy=1;
     size=50;
-    Itimer=0;
+    Itimer=180;
   
   }
   
@@ -19,7 +19,7 @@ class Enemy extends GameObject {
     roomx=rx;
     roomy=ry;
     size=50;
-    Itimer=0;
+    Itimer=180;
   
   }
   Enemy(int hitp, int s, int rx, int ry ) {
@@ -29,7 +29,7 @@ class Enemy extends GameObject {
     roomx=rx;
     roomy=ry;
     size=s; 
-      Itimer=0;
+      Itimer=180;
    
   }
   void show() {
@@ -62,7 +62,7 @@ class Enemy extends GameObject {
     while(j<myObjects.size()) {
      GameObject obj =myObjects.get(j);
     if(obj instanceof Hero && isCollidingWith(obj)) {
-   obj.hp=obj.hp-1;
+   obj.hp=obj.hp-10;
     Itimer=0; 
    }
     j++;
