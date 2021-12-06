@@ -17,15 +17,12 @@ class Hero extends GameObject {
 
 
     if (whichCat==1) {
-      speed=3;
       currentAction = orangeStill;
     }
     if (whichCat==2) {
-      speed=10;
       currentAction = whiteStill;
     }
     if (whichCat==3) {
-      speed=3;
       currentAction = blackStill;
     }
 
@@ -52,13 +49,13 @@ class Hero extends GameObject {
 
     //orange cat
     if (whichCat==1) {
-      speed=5;
+      speed=4;
       currentAction = orangeStill;
       hpMax=150;
     }
     //white cat
     if (whichCat==2) {
-      speed=7;
+      speed=5;
       currentAction = whiteStill;  
       hpMax=200;
     }

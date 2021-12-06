@@ -9,7 +9,7 @@ class AnimatedGIF  {
   
   //constructor
     
-   AnimatedGIF (int r, int nf, String pre, String post) { //number of frames (temperary variable)
+   AnimatedGIF (int r, int nf, String pre, String post) { 
   x=width/2;
   y=height/2;
   w=width;

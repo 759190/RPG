@@ -69,15 +69,20 @@ class Enemy extends GameObject {
       if (obj instanceof Bullet && isCollidingWith(obj)) {
         hp=hp- int (obj.velocity.mag()); //((Bullet) obj).damage;
         obj.hp=0;
+    
+
 
         if (hp<=0) {
           myHero.xp=myHero.xp+xp; // gives player xp
-          //myObjects.add(new Message(location, "x"+xp);
-          myObjects.add(new Message(location.x,location.y));
+          myObjects.add(new Message(location.x, location.y, roomx, roomy,"x"+xp));
+           for(int t=0;t<15;t++) {
+              myObjects.add(new Particle(location.x, location.y, roomx, roomy));
+           }
 
+  
 
           // ------------ Controls frequency of drops
-          fifty=int (random(0, 2));
+          fifty=int (random(0, 4));
           if (fifty==0) {
             myObjects.add(new DroppedItem(location.x, location.y, roomx, roomy));
           }

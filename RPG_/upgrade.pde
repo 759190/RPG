@@ -6,9 +6,9 @@ void upgrade() {
   text(myHero.money, width/2, 540);
   text("UPGRADES", width/2, 50);
   textSize(30);          // cat = speed, invinciblity - double drop?
-  text("Coin Value:  "+myHero.coinValue, 250, 150); // max hp, coin drop, hp drop (luck)
-  text("Damage:", 250, 275);
-  text("Item 3", 250, 400);
+  text("Coin Value:  "+myHero.coinValue, 300, 150); // max hp, coin drop, hp drop (luck)
+  text("Damage:", 300, 275);
+  text("Item 3", 300, 400);
   text("xp:"+myHero.xp, 50, 50); //xp counter
 
 
