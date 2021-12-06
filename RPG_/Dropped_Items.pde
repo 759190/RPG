@@ -78,7 +78,7 @@ roomy=ry;
    if (randomType==1) {
    myHero.hp= myHero.hp+10; 
    }else if (randomType==2) {
-   myHero.money=myHero.money+5;
+   myHero.money=myHero.money+myHero.coinValue;
    }
   }
     j++;

@@ -4,6 +4,8 @@ final int GAME=1;
 final int PAUSE=2;
 final int GAMEOVER=3;
 final int SHOP=4;
+final int UPGRADE=5;
+
 
 //setting dropped item types
 final int HEALTH=0;
@@ -11,6 +13,7 @@ final int GUN=1;
 final int COIN=2;
 
 int whichCat;
+AnimatedGIF currentAction;
 
 
 boolean mouseReleased;
@@ -40,6 +43,11 @@ Button button3;
 Button button4;
 Button button5;
 Button button6;
+Button button7;
+Button button8;
+Button button9;
+Button button10;
+Button button11;
 
 AnimatedGIF myGIF;
 //character gifs
@@ -106,7 +114,6 @@ void setup () {
   myObjects.add(myHero);
   //myObjects.add(new Enemy());
   // myObjects.add(new FolShooter(1,3));
-  //myObjects.add(new Follower(2,1));
 
 
 
@@ -115,11 +122,17 @@ void setup () {
 
 
   button1=new Button ("START", width/2, 350, 250, 100, blue, darkBlue); //start button
-  button2=new Button ("TRY AGAIN", width/2, 450, 270, 120, blue, darkBlue); //start button
-  button3=new Button ("Back", 650, 60, 110, 50, blue, darkBlue); //shop button
-  button4=new Button ("", width/2-200, height/2, 200, 300, blue, darkBlue); // cat 1
-  button5=new Button ("", width/2, height/2, 200, 300, blue, darkBlue); //cat 2
-  button6=new Button ("", width/2+200, height/2, 200, 300, blue, darkBlue); //cat 3
+  button2=new Button ("TRY AGAIN", width/2, 450, 270, 120, blue, darkBlue); //gameover button
+  button3=new Button ("GAME", 700, 60, 110, 50, blue, darkBlue); //shop button
+  button4=new Button ("", width/2-200, 250, 200, 250, blue, darkBlue); // cat 1
+  button5=new Button ("", width/2, 250, 200, 250, blue, darkBlue); //cat 2
+  button6=new Button ("", width/2+200, 250, 200, 250, blue, darkBlue); //cat 3
+  button7=new Button ("NEXT", 700, 550, 110, 50, blue, darkBlue); //next button
+  button8=new Button ("BACK", 700, 550, 110, 50, blue, darkBlue); //back button
+  button9=new Button ("", 100, 150, 100, 100, blue, darkBlue); //item 1
+  button10=new Button ("", 100, 275, 100, 100, blue, darkBlue); //item 2
+  button11=new Button ("", 100, 400, 100, 100, blue, darkBlue); //item 3
+
 
   myGIF=new AnimatedGIF(5, 27, "frame_", "_delay-0.1s.gif", 0, 0, width, height); //intro gif
 
@@ -186,6 +199,8 @@ void draw() {
     gameover();
   } else if (mode==SHOP) {
     shop();
+  } else if (mode==UPGRADE) {
+  upgrade();
   } else {
     println("Error: Mode= " + mode);
   }

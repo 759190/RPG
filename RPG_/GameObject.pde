@@ -1,20 +1,22 @@
-//game object
-
 class GameObject {
   int roomx,roomy;
   int size;
   PVector location;
   PVector velocity;
-  
-  int hp;
+  int hpMax;
+  int hp,xp;
   int money;
-  
+  int coinValue;
+ int Itimer;
+  float speed;
   
   GameObject() {
     location=new PVector(width/2,height/2);
     velocity=new PVector(0,0);
     hp=1;
     money=0;
+    hpMax=100;
+    Itimer=0;
     
   }
   
@@ -28,7 +30,7 @@ class GameObject {
   
   boolean isCollidingWith(GameObject myObj) {
     float d= dist(myObj.location.x,myObj.location.y,location.x,location.y);
-    if(inRoomWith(myObj) && d<size/2+myObj.size/2) 
+    if(inRoomWith(myObj) && d<size/2+myObj.size/2 && hp>0) 
     return true;
     else
     return false;
