@@ -13,9 +13,11 @@ class Hero extends GameObject {
     roomy=1;
     whichCat=3;
     xp=0;
-    coinValue=5;
+    coinValue=3;
+    damage=0;
+    betterxp=0;
 
-
+//tint(255,0,0);
     if (whichCat==1) {
       currentAction = orangeStill;
     }
@@ -41,7 +43,6 @@ class Hero extends GameObject {
     text(hp, location.x, location.y-50); // hp counter
     fill(0);
     textSize(30);
-    text(xp, width/2,50); // xp counter
    textSize(20);
 
     strokeWeight(4);

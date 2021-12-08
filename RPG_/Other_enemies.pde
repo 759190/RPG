@@ -1,3 +1,14 @@
+class Ghost extends Enemy {
+Ghost() {
+}
+}
+
+
+
+
+
+//------------------------------------------------------------------------
+
 class FolShooter extends Enemy { //follower shooter
  int FStimer;
 
@@ -5,7 +16,7 @@ class FolShooter extends Enemy { //follower shooter
      super(150,60,rx,ry);  //hp, size, roomx, roomy 
      FStimer=0;
      Itimer=180;
-     xp=10;
+     xp=10 +myHero.betterxp;
   }
   void show() {
     strokeWeight(4);
@@ -45,13 +56,13 @@ class Follower extends Enemy {
    Timer=180;
     location=new PVector(width/2,height/2);
      Itimer=180;
-     xp=5;
+     xp=5+myHero.betterxp;
   }
 Follower(int rx, int ry, int s) { // for follower shooter
    super(15,s,rx,ry);  //hp, size, roomx, roomy 
    Timer=180;
    location=new PVector(150,height/2);
- xp=1;
+ xp=1+myHero.betterxp;
    s=size;
   }
  void show() {

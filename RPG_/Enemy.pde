@@ -8,6 +8,7 @@ class Enemy extends GameObject {
     roomx=1;
     roomy=1;
     size=50;
+    xp=3+myHero.betterxp;
   }
 
   Enemy(int rx, int ry) {
@@ -67,12 +68,13 @@ class Enemy extends GameObject {
     while (i<myObjects.size()) {
       GameObject obj =myObjects.get(i);
       if (obj instanceof Bullet && isCollidingWith(obj)) {
-        hp=hp- int (obj.velocity.mag()); //((Bullet) obj).damage;
+        hp=hp- int (obj.velocity.mag())-myHero.damage; //((Bullet) obj).damage;
         obj.hp=0;
     
 
 
         if (hp<=0) {
+                   // hp=hp+myHero.betterxp;
           myHero.xp=myHero.xp+xp; // gives player xp
           myObjects.add(new Message(location.x, location.y, roomx, roomy,"x"+xp));
            for(int t=0;t<15;t++) {

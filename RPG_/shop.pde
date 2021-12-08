@@ -56,7 +56,6 @@ void shop() {
     mode=UPGRADE;
   }
 
-  //orange1 white2 black3
 
   // cat icons
   blackStill.show(100, 150, 200, 200);

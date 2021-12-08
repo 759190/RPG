@@ -80,7 +80,9 @@ color northRoom, eastRoom, southRoom, westRoom;
 ArrayList<GameObject> myObjects;
 ArrayList<Darkness> dark;
 
-//Darkness dark;
+int bulletCost;
+int xpCost;
+int coinCost;
 
 void setup () {
   //character gifs
@@ -115,8 +117,10 @@ void setup () {
   //myObjects.add(new Enemy());
   // myObjects.add(new FolShooter(1,3));
 
-
-
+//establishing cost
+ coinCost=1;
+  xpCost=1;
+  bulletCost=1;
 
 
 
@@ -129,9 +133,10 @@ void setup () {
   button6=new Button ("", width/2+200, 250, 200, 250, blue, darkBlue); //cat 3
   button7=new Button ("NEXT", 700, 550, 110, 50, blue, darkBlue); //next button
   button8=new Button ("BACK", 700, 550, 110, 50, blue, darkBlue); //back button
+  
   button9=new Button ("", 100, 150, 100, 100, blue, darkBlue); //item 1
-  button10=new Button ("", 100, 275, 100, 100, blue, darkBlue); //item 2
-  button11=new Button ("", 100, 400, 100, 100, blue, darkBlue); //item 3
+  button10=new Button ("", 100, 300, 100, 100, blue, darkBlue); //item 2
+  button11=new Button ("", 100, 450, 100, 100, blue, darkBlue); //item 3
 
 
   myGIF=new AnimatedGIF(5, 27, "frame_", "_delay-0.1s.gif", 0, 0, width, height); //intro gif

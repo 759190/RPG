@@ -9,6 +9,8 @@ class GameObject {
   int coinValue;
  int Itimer;
   float speed;
+  int damage;
+  int betterxp;
   
   GameObject() {
     location=new PVector(width/2,height/2);
@@ -17,6 +19,7 @@ class GameObject {
     money=0;
     hpMax=100;
     Itimer=0;
+    damage=0;
     
   }
   

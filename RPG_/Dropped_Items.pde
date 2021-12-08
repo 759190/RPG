@@ -59,7 +59,7 @@ roomy=ry;
      }
     }
      if (type==COIN) {
-     fill(255);
+     fill(black);
       text("$",location.x,location.y); 
      }
      if(type==HEALTH) {
