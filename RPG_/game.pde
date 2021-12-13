@@ -101,4 +101,13 @@ void drawRoom() {
   fill(blue);
   stroke(black);
   rect(width/2,height/2,580,428);
+  tint(#677498);
+
+ image(floor,112,90,300,250);
+  image(floor,388,90,300,250);
+  image(floor,112,262,300,250);
+  image(floor,388,262,300,250);
+
+ tint(255);
+
 }

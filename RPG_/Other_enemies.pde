@@ -25,6 +25,7 @@ class FolShooter extends Enemy { //follower shooter
    FStimer=FStimer+1;
    fill(lightGrey);
    //text(hp,150,300);
+
   }
   
   void act() {
@@ -51,12 +52,15 @@ class FolShooter extends Enemy { //follower shooter
 //------------------------------------------------------------------------
 class Follower extends Enemy {
   int  Timer;
+   int folSIZE;
+
   Follower(int rx, int ry) {
    super(100,50,rx,ry);  //hp, size, roomx, roomy 
    Timer=180;
     location=new PVector(width/2,height/2);
      Itimer=180;
      xp=5+myHero.betterxp;
+     folSIZE=90;
   }
 Follower(int rx, int ry, int s) { // for follower shooter
    super(15,s,rx,ry);  //hp, size, roomx, roomy 
@@ -64,14 +68,20 @@ Follower(int rx, int ry, int s) { // for follower shooter
    location=new PVector(150,height/2);
  xp=1+myHero.betterxp;
    s=size;
+   folSIZE=60;
   }
  void show() {
-    noStroke();
-    fill(255);
-    circle(location.x,location.y,size);
-    fill(0);
-    textSize(20);
-    text(hp,location.x,location.y);
+   tint(255,255,255,180);
+       ghostLeft.show(location.x-35, location.y-30, folSIZE, folSIZE);
+   tint(255,255,255);
+
+    //noStroke();
+    //fill(255);
+    //circle(location.x,location.y,size);
+    //fill(0);
+    //textSize(20);
+    //text(hp,location.x,location.y);
+
     
      
    //immunity timer

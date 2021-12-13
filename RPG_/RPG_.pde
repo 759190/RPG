@@ -36,6 +36,9 @@ PFont creepy; // font
 boolean spacekey, akey, skey, wkey, dkey, onekey,twokey,threekey,pkey; //keys
 int x, y;
 
+PImage ectoplasm;
+PImage floor;
+
 //buttons
 Button button1;
 Button button2;
@@ -68,6 +71,9 @@ AnimatedGIF blackDown;
 AnimatedGIF blackLeft;
 AnimatedGIF blackRight;
 AnimatedGIF blackStill;
+
+AnimatedGIF ghostLeft;
+AnimatedGIF ghostRight;
 
 
 Hero myHero;
@@ -105,6 +111,14 @@ void setup () {
   blackLeft=new AnimatedGIF(12, 4, "blackLEFT/sprite_", ".png");
   blackRight=new AnimatedGIF(12, 4, "blackRIGHT/sprite_", ".png"); 
   blackStill=new AnimatedGIF(12, 1, "blackSTILL/sprite_", ".png"); 
+  
+ //ghost
+ ghostLeft=new AnimatedGIF(15, 2, "ghostLEFT/sprite_", ".png"); //left
+ ghostRight=new AnimatedGIF(15, 2, "ghostRIGHT/sprite_", ".png"); //right
+
+ectoplasm=loadImage("ectoplasm.png"); 
+floor=loadImage("floor.png"); 
+
 
 
   size(800, 600);
@@ -168,6 +182,7 @@ void setup () {
     color roomColor = map.get(x, y);
     if (roomColor==room1) {
       myObjects.add(new FolShooter(x, y));
+      //myObjects.add(new Enemy(x, y));
     }
     if (roomColor==room2) {
       myObjects.add(new Follower(x, y));

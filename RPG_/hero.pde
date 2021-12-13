@@ -17,7 +17,8 @@ class Hero extends GameObject {
     damage=0;
     betterxp=0;
 
-//tint(255,0,0);
+    //tint(255,0,0);
+    //tint(255,255,255); reset color
     if (whichCat==1) {
       currentAction = orangeStill;
     }
@@ -43,7 +44,7 @@ class Hero extends GameObject {
     text(hp, location.x, location.y-50); // hp counter
     fill(0);
     textSize(30);
-   textSize(20);
+    textSize(20);
 
     strokeWeight(4);
     currentAction.show(location.x-40, location.y-45, size, size);
@@ -159,18 +160,37 @@ class Hero extends GameObject {
     if (northRoom!=#FFFFFF && location.y==100&&location.x>=width/2-50 &&location.x<=width/2+50) { 
       roomy--; 
       location=new PVector(width/2, height-105);
+      cleanUp();
     } 
     if (southRoom!=#FFFFFF && location.y==height-100&&location.x>=width/2-50 &&location.x<=width/2+50) { 
       roomy++;
       location=new PVector(width/2, 100);
+      cleanUp();
     } 
     if (eastRoom!=#FFFFFF && location.x==width-120&&location.y>=height/2-50 &&location.y<=height/2+50) { 
       roomx++; 
       location=new PVector(125, height/2);
+      cleanUp();
     } 
     if (westRoom!=#FFFFFF && location.x==120&&location.y>=height/2-50 &&location.y<=height/2+50) { 
       roomx--;
       location=new PVector(width-120, height/2);
+      cleanUp();
+    }
+  }
+
+  void cleanUp() {
+    int i=0;
+    while (i<myObjects.size()) {
+      GameObject obj = myObjects.get(i);
+      if (obj instanceof Bullet || obj instanceof Message) {
+        if (!inRoomWith(obj)) {
+          myObjects.remove(i);
+          i--;
+        }
+      }
+              i++;
+
     }
   }
 }

@@ -29,12 +29,13 @@ class Enemy extends GameObject {
   }
   void show() {
 
-    stroke(0);
-    fill(#7BAA16);
-    circle(location.x, location.y, size);
-    fill(0);
-    textSize(20);
-    text(hp, location.x, location.y);
+    //stroke(0);
+    //fill(#7BAA16);
+    //circle(location.x, location.y, size);
+    //fill(0);
+    //textSize(20);
+    //text(hp, location.x, location.y);
+    image(ectoplasm,location.x-40, location.y-38,80,80);
 
     //immunity timer
     Itimer=Itimer+1;
