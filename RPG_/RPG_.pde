@@ -1,4 +1,4 @@
- int mode;
+int mode;
 final int INTRO=0;
 final int GAME=1;
 final int PAUSE=2;
@@ -33,7 +33,7 @@ color room2=#4f4f4f;
 color room3=#dddddd;
 
 PFont creepy; // font
-boolean spacekey, akey, skey, wkey, dkey, onekey,twokey,threekey,pkey; //keys
+boolean spacekey, akey, skey, wkey, dkey, onekey, twokey, threekey, pkey; //keys
 int x, y;
 
 PImage ectoplasm;
@@ -111,13 +111,13 @@ void setup () {
   blackLeft=new AnimatedGIF(12, 4, "blackLEFT/sprite_", ".png");
   blackRight=new AnimatedGIF(12, 4, "blackRIGHT/sprite_", ".png"); 
   blackStill=new AnimatedGIF(12, 1, "blackSTILL/sprite_", ".png"); 
-  
- //ghost
- ghostLeft=new AnimatedGIF(15, 2, "ghostLEFT/sprite_", ".png"); //left
- ghostRight=new AnimatedGIF(15, 2, "ghostRIGHT/sprite_", ".png"); //right
 
-ectoplasm=loadImage("ectoplasm.png"); 
-floor=loadImage("floor.png"); 
+  //ghost
+  ghostLeft=new AnimatedGIF(15, 2, "ghostLEFT/sprite_", ".png"); //left
+  ghostRight=new AnimatedGIF(15, 2, "ghostRIGHT/sprite_", ".png"); //right
+
+  ectoplasm=loadImage("ectoplasm.png"); 
+  floor=loadImage("floor.png"); 
 
 
 
@@ -128,11 +128,19 @@ floor=loadImage("floor.png");
   myObjects=new ArrayList<GameObject>(1000);
   myHero=new Hero();
   myObjects.add(myHero);
-  //myObjects.add(new Enemy());
-  // myObjects.add(new FolShooter(1,3));
+  //myObjects.add(new Tower(1, 1));
 
-//establishing cost
- coinCost=1;
+  // myObjects.add(new FolShooter(1,3));
+  myObjects.add(new Bouncer(1, 1));
+  myObjects.add(new Bouncer(1, 1));
+  myObjects.add(new Bouncer(1, 1));
+  myObjects.add(new Bouncer(1, 1));
+  myObjects.add(new Bouncer(1, 1));
+  myObjects.add(new Bouncer(1, 1));
+
+
+  //establishing cost
+  coinCost=1;
   xpCost=1;
   bulletCost=1;
 
@@ -147,7 +155,7 @@ floor=loadImage("floor.png");
   button6=new Button ("", width/2+200, 250, 200, 250, blue, darkBlue); //cat 3
   button7=new Button ("NEXT", 700, 550, 110, 50, blue, darkBlue); //next button
   button8=new Button ("BACK", 700, 550, 110, 50, blue, darkBlue); //back button
-  
+
   button9=new Button ("", 100, 150, 100, 100, blue, darkBlue); //item 1
   button10=new Button ("", 100, 300, 100, 100, blue, darkBlue); //item 2
   button11=new Button ("", 100, 450, 100, 100, blue, darkBlue); //item 3
@@ -186,6 +194,7 @@ floor=loadImage("floor.png");
     }
     if (roomColor==room2) {
       myObjects.add(new Follower(x, y));
+      myObjects.add(new Tower(x, y));
     }
     if (roomColor==room3) {
       myObjects.add(new Enemy(x, y));
@@ -195,9 +204,7 @@ floor=loadImage("floor.png");
       x=0;
       y++;
     }
-    
   }
-
 }
 
 void draw() {
@@ -220,7 +227,7 @@ void draw() {
   } else if (mode==SHOP) {
     shop();
   } else if (mode==UPGRADE) {
-  upgrade();
+    upgrade();
   } else {
     println("Error: Mode= " + mode);
   }

@@ -1,38 +1,145 @@
-class Ghost extends Enemy {
-Ghost() {
-}
-}
+ float vx,vy;
 
+class Bouncer extends Enemy {
+  //instance variables
+  float d, vx, vy;
+  
 
+  
+  //constructor
+  Bouncer(int rx, int ry) {
+super(80,30,rx,ry);  //hp, size, roomx, roomy
+ x=width/2;
+ y=height/2;
+ d=30;
+ vx = random(0, 5);
+ vy = random(0, 5);
+ roomx=rx;
+ roomy=ry;
+ xp=5 +myHero.betterxp;
+ hp=1;
+ Itimer=180;
+  }
+
+  
+  void show() {
+stroke(0);
+strokeWeight(6);
+fill(0);
+circle(location.x,location.y,d);
+Itimer++;
+  }
+    void act() {
+     super.act();
+   
+   //collision code  
+   if (Itimer>180) {
+      int l=0;
+      while (l<myObjects.size()) {
+        GameObject obj =myObjects.get(l);
+        if (obj instanceof Hero && isCollidingWith(obj)) {
+          obj.hp=obj.hp-5;
+          Itimer=0;
+        }
+        l++;
+      }
+    } 
+  
+// bouncing
+location.x=location.x+vx;
+location.y=location.y+vy;
+if (location.x>680-d/2 || location.x<120+d/2){
+  vx=-vx;
+}
+if (location.y>500-d/2 || location.y<120+d/2){
+  vy=-vy;
+}
+  
+  }
+}
 
 
 
 //------------------------------------------------------------------------
 
-class FolShooter extends Enemy { //follower shooter
+class Tower extends Enemy {
+int tTimer;
+
+ 
+
+  Tower(int rx, int ry) {
+     super(150,60,rx,ry);  //hp, size, roomx, roomy
+     tTimer=0;
+     xp=10 +myHero.betterxp;
+     Itimer=180;
+     location.x=width/2;
+    location.y=100;
+  }
+  void show() {
+    strokeWeight(4);
+    fill(green);
+    circle(location.x,location.y,size);
+    
+   tTimer=tTimer+1;
+   Itimer++;
+    vx=myHero.location.x-location.x; 
+    vy=myHero.location.y-location.y;
+ 
+
+  }
+  
+  void act() {
+   super.act();
+   while (tTimer==100) {
+     myObjects.add(new EnemyBullet(location.x,location.y,vx,vy,roomx,roomy));//x,y, vx,vy,rx,ry
+      tTimer=0;
+   }
+  //collision code  
+    if (Itimer>180) {
+   int t=0;
+    while(t<myObjects.size()) {
+     GameObject obj =myObjects.get(t);
+  if(obj instanceof Hero && isCollidingWith(obj)) {
+   obj.hp=obj.hp-5;
+     Itimer=0;
+   }
+    t++;
+    } 
+ }
+  }
+}
+  
+//------------------------------------------------------------------------
+
+class FolShooter extends Enemy { // shooter
  int FStimer;
 
   FolShooter(int rx, int ry) {
      super(150,60,rx,ry);  //hp, size, roomx, roomy 
      FStimer=0;
-     Itimer=180;
      xp=10 +myHero.betterxp;
+     
+   
   }
   void show() {
     strokeWeight(4);
     fill(black);
     circle(150,height/2,size);
    FStimer=FStimer+1;
-   fill(lightGrey);
-   //text(hp,150,300);
+      vx=myHero.location.x-location.x; 
+    vy=myHero.location.y-location.y;
+    
+ 
 
   }
   
   void act() {
    super.act();
    while (FStimer==100) {
-      myObjects.add(new Follower(roomx,roomy,30)); // roomx, roomy size
+    myObjects.add(new Follower(roomx,roomy,30)); // roomx, roomy size
       FStimer=0;
+         
+
    }
       
        int j=0;
@@ -51,12 +158,11 @@ class FolShooter extends Enemy { //follower shooter
 
 //------------------------------------------------------------------------
 class Follower extends Enemy {
-  int  Timer;
    int folSIZE;
 
   Follower(int rx, int ry) {
    super(100,50,rx,ry);  //hp, size, roomx, roomy 
-   Timer=180;
+   Itimer=180;
     location=new PVector(width/2,height/2);
      Itimer=180;
      xp=5+myHero.betterxp;
@@ -64,7 +170,7 @@ class Follower extends Enemy {
   }
 Follower(int rx, int ry, int s) { // for follower shooter
    super(15,s,rx,ry);  //hp, size, roomx, roomy 
-   Timer=180;
+   Itimer=180;
    location=new PVector(150,height/2);
  xp=1+myHero.betterxp;
    s=size;
@@ -85,13 +191,13 @@ Follower(int rx, int ry, int s) { // for follower shooter
     
      
    //immunity timer
-   Timer= Timer+1;
+   Itimer= Itimer+1;
     
-  if (Timer<180) {
-    noFill();
-    stroke(255);
-    circle(myHero.location.x,myHero.location.y,55);
-  }
+  //if (Itimer<180) {
+  //  noFill();
+  //  stroke(255);
+  //  circle(myHero.location.x,myHero.location.y,55);
+  //}
     
   }
   void act() {
@@ -101,13 +207,13 @@ Follower(int rx, int ry, int s) { // for follower shooter
     velocity.setMag(1);
     
   //collision code  
-    if (Timer>180) {
+    if (Itimer>180) {
    int j=0;
     while(j<myObjects.size()) {
      GameObject obj =myObjects.get(j);
   if(obj instanceof Hero && isCollidingWith(obj)) {
    obj.hp=obj.hp-5;
-     Timer=0;
+     Itimer=0;
    }
     j++;
     } 

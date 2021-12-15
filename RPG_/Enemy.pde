@@ -41,16 +41,16 @@ class Enemy extends GameObject {
     Itimer=Itimer+1;
     println(Itimer);
 
-    if (Itimer<180) {
-      noFill();
-      stroke(255);
-      circle(myHero.location.x, myHero.location.y, 55);
-    }
+    //if (Itimer<180) {
+    //  noFill();
+    //  stroke(255);
+    //  circle(myHero.location.x, myHero.location.y, 55);
+    //}
   }
   void act() {
     super.act();
 
-    //if hero hits enemy
+   // if hero hits enemy
     if (Itimer>180) {
       int j=0;
       while (j<myObjects.size()) {
