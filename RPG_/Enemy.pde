@@ -18,6 +18,8 @@ class Enemy extends GameObject {
     roomx=rx;
     roomy=ry;
     size=50;
+   xp=5+myHero.betterxp;
+
   }
   Enemy(int hitp, int s, int rx, int ry ) {
     location=new PVector(150, 300);
@@ -35,8 +37,9 @@ class Enemy extends GameObject {
     //fill(0);
     //textSize(20);
     //text(hp, location.x, location.y);
+    tint(255,200);
     image(ectoplasm,location.x-40, location.y-38,80,80);
-
+tint(255);
     //immunity timer
     Itimer=Itimer+1;
     println(Itimer);
@@ -71,6 +74,9 @@ class Enemy extends GameObject {
       if (obj instanceof Bullet && isCollidingWith(obj)) {
         hp=hp- int (obj.velocity.mag())-myHero.damage; //((Bullet) obj).damage;
         obj.hp=0;
+        for(int t=0;t<10;t++) {
+              myObjects.add(new Particle(location.x, location.y, roomx, roomy,0));
+           }
     
 
 
@@ -79,7 +85,7 @@ class Enemy extends GameObject {
           myHero.xp=myHero.xp+xp; // gives player xp
           myObjects.add(new Message(location.x, location.y, roomx, roomy,"x"+xp));
            for(int t=0;t<15;t++) {
-              myObjects.add(new Particle(location.x, location.y, roomx, roomy));
+              myObjects.add(new Particle(location.x, location.y, roomx, roomy,255));
            }
 
   

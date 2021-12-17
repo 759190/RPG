@@ -131,12 +131,14 @@ void setup () {
   //myObjects.add(new Tower(1, 1));
 
   // myObjects.add(new FolShooter(1,3));
-  myObjects.add(new Bouncer(1, 1));
-  myObjects.add(new Bouncer(1, 1));
-  myObjects.add(new Bouncer(1, 1));
-  myObjects.add(new Bouncer(1, 1));
-  myObjects.add(new Bouncer(1, 1));
-  myObjects.add(new Bouncer(1, 1));
+  //myObjects.add(new Bouncer(1, 1));
+  //myObjects.add(new Bouncer(1, 1));
+  //myObjects.add(new Bouncer(1, 1));
+  //myObjects.add(new Bouncer(1, 1));
+  //myObjects.add(new Bouncer(1, 1));
+  //myObjects.add(new Bouncer(1, 1));
+  myObjects.add(new BouncerShooter(1, 1));
+
 
 
   //establishing cost
@@ -190,7 +192,8 @@ void setup () {
     color roomColor = map.get(x, y);
     if (roomColor==room1) {
       myObjects.add(new FolShooter(x, y));
-      //myObjects.add(new Enemy(x, y));
+      myObjects.add(new Enemy(x, y));
+
     }
     if (roomColor==room2) {
       myObjects.add(new Follower(x, y));

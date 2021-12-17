@@ -1,12 +1,13 @@
 class Particle extends GameObject {
  int tr; //transparency
- 
- Particle (float x, float y, int rx, int ry) {
+ color pColor;
+ Particle (float x, float y, int rx, int ry, int c) {
    hp=1;
    size=int(random(1,5));
    tr=200;
    location=new PVector(x,y);
     velocity= new PVector(0,1);
+    pColor=c;
  
    
 velocity.rotate(PI+random(-5,5)); 
@@ -18,7 +19,7 @@ roomy=ry;
  
   void show() {
     rectMode(CENTER);
-    stroke(255);
+    stroke(pColor);
     noFill();
     circle(location.x,location.y,size);
 

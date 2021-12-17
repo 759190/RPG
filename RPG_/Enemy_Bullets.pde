@@ -2,7 +2,7 @@ class EnemyBullet extends GameObject {
   int timer;
  
   EnemyBullet(float x,float y, float vx, float vy, int rx, int ry) {
-    timer=80;
+    timer=45;
     hp=1;
     location=new PVector(x,y);
     velocity= new PVector(vx,vy);
@@ -17,10 +17,12 @@ class EnemyBullet extends GameObject {
  void show() {
    stroke(255);
    fill(255);
-   ellipse(location.x,location.y,size,size); 
+   //ellipse(location.x,location.y,size,size); 
+   tint(0,200);
+    image(ectoplasm,location.x-12, location.y-10,size+15,size+15);
+tint(255);
    
     Itimer=Itimer+1;
-    println(Itimer);
  }
  void act() {
    super.act();
