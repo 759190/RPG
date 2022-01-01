@@ -5,6 +5,8 @@ class BouncerShooter extends Enemy { // shooter
      super(500,80,rx,ry);  //hp, size, roomx, roomy 
      BStimer=0;
      //xp=10 +myHero.betterxp;
+     location.x=width/2;
+     location.y=height/2;
     
     
    

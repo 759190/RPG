@@ -28,9 +28,11 @@ color lightGrey=#DCE0E6;
 color yellow=#FFF36A;
 color green=#7BAA16;
 
-color room1=#8b8b8b;
-color room2=#4f4f4f;
-color room3=#dddddd;
+color room1=#252525; //red on cheat map
+color room2=#252526; //green on cheat map
+color room3=#252527; // blue on cheat map
+color treasure=#fff200;
+color boss=#3cedf1;
 
 PFont creepy; // font
 boolean spacekey, akey, skey, wkey, dkey, onekey, twokey, threekey, pkey; //keys
@@ -128,17 +130,10 @@ void setup () {
   myObjects=new ArrayList<GameObject>(1000);
   myHero=new Hero();
   myObjects.add(myHero);
-  //myObjects.add(new Tower(1, 1));
-
-  // myObjects.add(new FolShooter(1,3));
-  //myObjects.add(new Bouncer(1, 1));
-  //myObjects.add(new Bouncer(1, 1));
-  //myObjects.add(new Bouncer(1, 1));
-  //myObjects.add(new Bouncer(1, 1));
-  //myObjects.add(new Bouncer(1, 1));
-  //myObjects.add(new Bouncer(1, 1));
-  myObjects.add(new BouncerShooter(1, 1));
-
+  //myObjects.add(new BouncerShooter(3, 1));
+     myObjects.add(new Enemy(3, 2));
+     myObjects.add(new Enemy(3, 2));
+     myObjects.add(new Enemy(3, 2));
 
 
   //establishing cost
@@ -191,16 +186,29 @@ void setup () {
   while (y<map.height) {
     color roomColor = map.get(x, y);
     if (roomColor==room1) {
-      myObjects.add(new FolShooter(x, y));
-      myObjects.add(new Enemy(x, y));
+     
+      myObjects.add(new Bouncer(x, y));
+      myObjects.add(new Bouncer(x, y));  
+      myObjects.add(new Bouncer(x, y));
+      myObjects.add(new Bouncer(x, y));
+
 
     }
     if (roomColor==room2) {
       myObjects.add(new Follower(x, y));
       myObjects.add(new Tower(x, y));
     }
+    if (roomColor==treasure) {
+    
+    
+    }
+    if (roomColor==boss) {
+      myObjects.add(new BouncerShooter(x, y));
+    
+    }
     if (roomColor==room3) {
-      myObjects.add(new Enemy(x, y));
+     myObjects.add(new FolShooter(x, y));
+    myObjects.add(new Enemy(x, y));
     }
     x++;
     if (x==map.width) {

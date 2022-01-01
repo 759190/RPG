@@ -9,7 +9,7 @@ class Hero extends GameObject {
     super();
     hp=100;
     //speed=5;
-    roomx=1;
+    roomx=3;
     roomy=1;
     whichCat=3;
     xp=0;

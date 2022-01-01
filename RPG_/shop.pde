@@ -1,4 +1,8 @@
 color rectcolor;
+boolean boughtOrange;
+boolean boughtWhite;
+int whiteCost;
+int orangeCost;
 void shop() {
   background(0);
   fill(lightGrey);
@@ -10,7 +14,8 @@ void shop() {
 
   textSize(80);
   text("SHOP", width/2, 50);
-
+  //boughtOrange=false;
+  //boughtWhite=false;
 
 
   //speed text
@@ -39,26 +44,75 @@ void shop() {
   button7.show();
 
 
+  orangeCost=1;
+  whiteCost=1;
+
   if (button3.clicked) mode=GAME;
-  if (button4.clicked) {
+  if (button4.clicked ) {
     whichCat=3;
     currentAction = blackStill;
   }
-  if (button5.clicked) {
+  fill(200);
+  if (button5.clicked && myHero.money>=orangeCost && boughtOrange==false) {
+    myHero.money=myHero.money-orangeCost;
+    boughtOrange=true;
+  }
+
+  if (boughtOrange==true) {
     whichCat=1;
     currentAction = orangeStill;
   }
-  if (button6.clicked) {
+
+  if (button6.clicked && myHero.money>=whiteCost && boughtWhite==false) {
+    myHero.money=myHero.money-whiteCost;
+    boughtWhite=true;
+  } 
+  if (boughtWhite==true) {
     whichCat=2;
     currentAction = whiteStill;
-  }
+  }  
+
+
   if (button7.clicked) {
     mode=UPGRADE;
   }
 
+  if (whichCat==1) {
+    fill(green);
+    rect(width/2, 250, 195, 245);
+  }
+  if (whichCat==2) {
+    fill(green);
+    rect(width/2+200, 250, 195, 245);
+  }
+  if (whichCat==3) {
+    fill(lightGrey);
+    rect(width/2-200, 250, 195, 245);
+  }
+  blackStill.show(100, 155, 200, 200);
+  orangeStill.show(300, 155, 200, 200);
+  whiteStill.show(500, 155, 200, 200);
 
-  // cat icons
-  blackStill.show(100, 150, 200, 200);
-  orangeStill.show(300, 150, 200, 200);
-  whiteStill.show(500, 150, 200, 200);
+
+
+
+  if (myHero.money<orangeCost && boughtOrange==false) {
+    noStroke();
+    fill(255);
+    rect(width/2, 151, 90, 25);
+    fill(0);
+    text("Cost: $"+orangeCost, width/2, 150);
+  }
+  if (myHero.money<whiteCost && boughtWhite==false) {
+    noStroke();
+    fill(255);
+    rect(width/2+200, 151, 90, 25);
+    fill(0);
+    text("Cost: $"+whiteCost, width/2+200, 150);
+  }
+
+
+  //rect(width/2+200,250,195,245);
+  //rect(width/2,250,195,245);
+  // rect(width/2-200,250,195,245);
 }

@@ -19,6 +19,8 @@ class Bouncer extends Enemy {
     xp=5 +myHero.betterxp;
     hp=1;
     Itimer=180;
+    location.x=width/2;
+    location.y=height/2;
   }
 
 
