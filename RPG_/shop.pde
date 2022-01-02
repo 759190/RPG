@@ -7,10 +7,16 @@ void shop() {
   background(0);
   fill(lightGrey);
   textSize(50);
-  text("$", width/2-30, 540);
-  text(myHero.money, width/2, 540);
-  textSize(30);
-  text("xp:"+myHero.xp, 50, 50); //xp counter
+  
+   //money and xp counters
+    fill(darkBlue);
+   noStroke();
+  ellipse(width/2, 550,250,50);
+  
+ textSize(25);
+ fill(lightGrey);
+  text("xp: "+myHero.xp, width/2+50, 550); //xp counter
+  text("$ "+myHero.money,width/2-50, 550);
 
   textSize(80);
   text("SHOP", width/2, 50);
@@ -37,11 +43,11 @@ void shop() {
 
   // back to game button
   click();  
-  button3.show();
-  button4.show();
-  button5.show();
-  button6.show();
-  button7.show();
+  button3.show(); //game
+  button4.show(); //item 1
+  button5.show(); // item 2
+  button6.show(); //item 3
+  button7.show(); // next
 
 
   orangeCost=1;
@@ -89,11 +95,13 @@ void shop() {
     fill(lightGrey);
     rect(width/2-200, 250, 195, 245);
   }
+ 
+
   blackStill.show(100, 155, 200, 200);
   orangeStill.show(300, 155, 200, 200);
   whiteStill.show(500, 155, 200, 200);
 
-
+ 
 
 
   if (myHero.money<orangeCost && boughtOrange==false) {
@@ -110,9 +118,16 @@ void shop() {
     fill(0);
     text("Cost: $"+whiteCost, width/2+200, 150);
   }
+  
+  if (boughtOrange==false){
+fill(blue);
+    rect(width/2+200,250,195,245);
+    fill(255);
+    textSize(150);
+    text("?", width/2+200, 250);
+  }
+    image(scope,mouseX,mouseY,30,30);
 
-
-  //rect(width/2+200,250,195,245);
   //rect(width/2,250,195,245);
   // rect(width/2-200,250,195,245);
 }

@@ -2,13 +2,13 @@ class BouncerShooter extends Enemy { // shooter
  int BStimer;
 
   BouncerShooter(int rx, int ry) {
-     super(500,80,rx,ry);  //hp, size, roomx, roomy 
+     super(1,80,rx,ry);  //hp, size, roomx, roomy 
      BStimer=0;
      //xp=10 +myHero.betterxp;
      location.x=width/2;
      location.y=height/2;
     
-    
+
    
   }
   void show() {
@@ -24,6 +24,9 @@ class BouncerShooter extends Enemy { // shooter
     vx=myHero.location.x-location.x; 
     vy=myHero.location.y-location.y;
     
+    
+   
+ 
  
 
   }
@@ -33,9 +36,9 @@ class BouncerShooter extends Enemy { // shooter
    while (BStimer==100) {
     myObjects.add(new Bouncer(roomx,roomy)); // roomx, roomy size
       BStimer=0;
-         
-
    }
+      
+   
       
        int j=0;
     while(j<myObjects.size()) {
@@ -48,5 +51,5 @@ class BouncerShooter extends Enemy { // shooter
    
    
    
-  }
-}
+  } // end of act
+} // end

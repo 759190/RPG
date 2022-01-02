@@ -39,7 +39,6 @@ class Hero extends GameObject {
   void show() {
     fill(0);
     textSize(30);
-    //text(money, 700,50); //money counter
     textSize(20);
     text(hp, location.x, location.y-50); // hp counter
     fill(0);

@@ -77,7 +77,7 @@ class Tower extends Enemy {
     xp=10 +myHero.betterxp;
     Itimer=180;
     location.x=width/2;
-    location.y=100;
+    location.y=height/2;
   }
   void show() {
     strokeWeight(4);
@@ -158,15 +158,18 @@ class Follower extends Enemy {
   Follower(int rx, int ry) {
     super(100, 50, rx, ry);  //hp, size, roomx, roomy 
     Itimer=180;
-    location=new PVector(width/2, height/2);
+    location.x=random(150, 500);
+    location.y=random(150, 400);    
     Itimer=180;
+
     xp=5+myHero.betterxp;
     folSIZE=90;
   }
   Follower(int rx, int ry, int s) { // for follower shooter
     super(15, s, rx, ry);  //hp, size, roomx, roomy 
     Itimer=180;
-    location=new PVector(150, height/2);
+       location=new PVector(150, height/2);
+
     xp=1+myHero.betterxp;
     s=size;
     folSIZE=60;

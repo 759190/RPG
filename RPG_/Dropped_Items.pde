@@ -1,12 +1,14 @@
 class DroppedItem extends GameObject {
   
   int type, randomType, randomSpawn;
+
   Weapon w; 
   color c;
   
   
   DroppedItem (float x, float y, int rx, int ry) {
     // TEST ZONE -------------------------------------
+
 
    randomType=int (random(0,3));
     if (randomType==0) {
@@ -43,7 +45,7 @@ roomy=ry;
     stroke(black);
     fill(c);
     circle(location.x,location.y,size);
-    
+    textSize(20);
     if (type==GUN) {
      if (randomSpawn==0) {
        fill(255);

@@ -1,6 +1,6 @@
 class Enemy extends GameObject {
 
-  int fifty;
+  int RandomDrop;
   
   
 
@@ -66,6 +66,8 @@ class Enemy extends GameObject {
     while (i<myObjects.size()) {
       GameObject obj =myObjects.get(i);
       if (obj instanceof Bullet && isCollidingWith(obj)) {
+       
+
         hp=hp- int (obj.velocity.mag())-myHero.damage; //((Bullet) obj).damage;
         obj.hp=0;
         for (int t=0; t<10; t++) {
@@ -85,8 +87,8 @@ class Enemy extends GameObject {
 
 
           // ------------ Controls frequency of drops
-          fifty=int (random(0, 4));
-          if (fifty==0) {
+          RandomDrop=int (random(0, 3));
+          if (RandomDrop==0 ) {
             myObjects.add(new DroppedItem(location.x, location.y, roomx, roomy));
           }
         }

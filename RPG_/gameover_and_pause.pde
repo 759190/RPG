@@ -13,6 +13,23 @@ mode=INTRO;
  
 } 
 }
+
+void win() {
+
+   reset();
+  background(darkBlue);
+  fill(lightGrey);
+  textSize(100);
+  text("YOU WIN",width/2,200);  
+  click();  
+ button2.show();
+ if (button2.clicked) {
+mode=INTRO; 
+}
+ }
+
+ 
+ 
 void reset() { //reset-------------------------------------------
  //create objects
   myObjects=new ArrayList<GameObject>(1000);
@@ -52,8 +69,3 @@ void reset() { //reset-------------------------------------------
   }
   
     }//end
-
-//----------------------------------------------
-void pause () {
-  
-}

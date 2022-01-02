@@ -1,10 +1,11 @@
 int mode;
 final int INTRO=0;
 final int GAME=1;
-final int PAUSE=2;
+final int BANK=2;
 final int GAMEOVER=3;
 final int SHOP=4;
 final int UPGRADE=5;
+final int WIN=6;
 
 
 //setting dropped item types
@@ -28,11 +29,12 @@ color lightGrey=#DCE0E6;
 color yellow=#FFF36A;
 color green=#7BAA16;
 
-color room1=#252525; //red on cheat map
-color room2=#252526; //green on cheat map
-color room3=#252527; // blue on cheat map
+color room1=#171717; //salmon on cheat map
+color room2=#101010; //green on cheat map
+color room3=#040405; // blue on cheat map
+color room4=#020203;  // pink on cheat map
+color room5=#030203; //maroon on cheat map // actually pink
 color treasure=#fff200;
-color boss=#3cedf1;
 
 PFont creepy; // font
 boolean spacekey, akey, skey, wkey, dkey, onekey, twokey, threekey, pkey; //keys
@@ -40,6 +42,10 @@ int x, y;
 
 PImage ectoplasm;
 PImage floor;
+PImage chest, openChest;
+PImage scope;
+
+
 
 //buttons
 Button button1;
@@ -53,6 +59,8 @@ Button button8;
 Button button9;
 Button button10;
 Button button11;
+Button button12;
+Button chestbutton;
 
 AnimatedGIF myGIF;
 //character gifs
@@ -82,6 +90,7 @@ Hero myHero;
 
 //Image
 PImage map;
+PImage gem;
 color northRoom, eastRoom, southRoom, westRoom;
 
 //game objects
@@ -95,7 +104,8 @@ int coinCost;
 void setup () {
   //character gifs
   //orange cat
-  //noCursor();
+   noCursor();
+
   orangeUp=new AnimatedGIF(12, 2, "orangeUP/sprite_", ".png"); 
   orangeDown=new AnimatedGIF(12, 2, "orangeDOWN/sprite_", ".png"); 
   orangeLeft=new AnimatedGIF(12, 4, "orangeLEFT/sprite_", ".png");
@@ -130,10 +140,14 @@ void setup () {
   myObjects=new ArrayList<GameObject>(1000);
   myHero=new Hero();
   myObjects.add(myHero);
-  //myObjects.add(new BouncerShooter(3, 1));
-     myObjects.add(new Enemy(3, 2));
-     myObjects.add(new Enemy(3, 2));
-     myObjects.add(new Enemy(3, 2));
+  
+ myObjects.add(new Wall(3, 1));
+  myObjects.add(new FolShooter(6, 3));
+   myObjects.add(new WinItem(width/2, height/2, 3, 8));
+
+  myObjects.add(new BouncerShooter(3, 8)); //final boss
+
+
 
 
   //establishing cost
@@ -151,16 +165,26 @@ void setup () {
   button5=new Button ("", width/2, 250, 200, 250, blue, darkBlue); //cat 2
   button6=new Button ("", width/2+200, 250, 200, 250, blue, darkBlue); //cat 3
   button7=new Button ("NEXT", 700, 550, 110, 50, blue, darkBlue); //next button
-  button8=new Button ("BACK", 700, 550, 110, 50, blue, darkBlue); //back button
+  button8=new Button ("BACK", 100, 550, 110, 50, blue, darkBlue); //back button
+  button12=new Button ("BANK", 700, 550, 110, 50, blue, darkBlue); //next button
+
 
   button9=new Button ("", 100, 150, 100, 100, blue, darkBlue); //item 1
   button10=new Button ("", 100, 300, 100, 100, blue, darkBlue); //item 2
   button11=new Button ("", 100, 450, 100, 100, blue, darkBlue); //item 3
+  chestbutton=new Button ("", width/2, height/2, 60, 40, blue, darkBlue); //chest
 
 
   myGIF=new AnimatedGIF(5, 27, "frame_", "_delay-0.1s.gif", 0, 0, width, height); //intro gif
 
   map=loadImage("Map.png");
+  gem=loadImage("Gem.png");
+  chest=loadImage("closedchest.png");
+  openChest=loadImage("openchest.png");
+   scope=loadImage("scope.png");
+
+
+
 
 
   //create darkness
@@ -186,29 +210,37 @@ void setup () {
   while (y<map.height) {
     color roomColor = map.get(x, y);
     if (roomColor==room1) {
-     
+
       myObjects.add(new Bouncer(x, y));
       myObjects.add(new Bouncer(x, y));  
       myObjects.add(new Bouncer(x, y));
       myObjects.add(new Bouncer(x, y));
-
-
+      myObjects.add(new Bouncer(x, y));
     }
     if (roomColor==room2) {
       myObjects.add(new Follower(x, y));
       myObjects.add(new Tower(x, y));
     }
     if (roomColor==treasure) {
-    
-    
-    }
-    if (roomColor==boss) {
-      myObjects.add(new BouncerShooter(x, y));
-    
+        myObjects.add(new Chest(x,y)); //chest
+
     }
     if (roomColor==room3) {
-     myObjects.add(new FolShooter(x, y));
-    myObjects.add(new Enemy(x, y));
+      myObjects.add(new Enemy(x, y));
+      myObjects.add(new Enemy(x, y));
+      myObjects.add(new Enemy(x, y));
+ 
+    }
+    if (roomColor==room4) {
+      myObjects.add(new Follower(x, y));
+      myObjects.add(new Follower(x, y));
+      myObjects.add(new Follower(x, y));
+      myObjects.add(new Follower(x, y));
+    }
+    if (roomColor==room5) {
+     // myObjects.add(new FolShooter(x, y));
+      myObjects.add(new Enemy(x, y));
+     // myObjects.add(new Enemy(x, y));
     }
     x++;
     if (x==map.width) {
@@ -231,14 +263,16 @@ void draw() {
     intro();
   } else if (mode==GAME) {  
     game();
-  } else if (mode==PAUSE) {
-    pause();
+  } else if (mode==BANK) {
+    bank();
   } else if (mode==GAMEOVER) {
     gameover();
   } else if (mode==SHOP) {
     shop();
   } else if (mode==UPGRADE) {
     upgrade();
+    } else if (mode==WIN) {
+    win();
   } else {
     println("Error: Mode= " + mode);
   }

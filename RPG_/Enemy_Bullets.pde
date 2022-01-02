@@ -2,7 +2,7 @@ class EnemyBullet extends GameObject {
   int timer;
  
   EnemyBullet(float x,float y, float vx, float vy, int rx, int ry) {
-    timer=45;
+    timer=35;
     hp=1;
     location=new PVector(x,y);
     velocity= new PVector(vx,vy);

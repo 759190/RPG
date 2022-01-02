@@ -6,24 +6,35 @@ void upgrade() {
   background(0);
   fill(lightGrey);
   textSize(50);
-  text("$", width/2-30, 540);
-  text(myHero.money, width/2, 540);
   text("UPGRADES", width/2, 50);
   textSize(30);          // cat = speed, invinciblity - double drop?
   text("Coin Value:  "+myHero.coinValue, 300, 150); // max hp, coin drop, hp drop (luck)
   text("Bullet Damage:  "+myHero.damage, 340, 300);
   text("More xp:  "+myHero.betterxp, 300, 450); //
-  text("xp:"+myHero.xp, 50, 50); //xp counter
+  
+  //money and xp counters
+    fill(darkBlue);
+   noStroke();
+  ellipse(width/2, 550,250,50);
+  
+ textSize(25);
+ fill(lightGrey);
+  text("xp: "+myHero.xp, width/2+50, 550); //xp counter
+  text("$ "+myHero.money,width/2-50, 550);
+
   
 
 
   click();  
-  button3.show(); //game
   button9.show();// item 1
   button10.show(); // item 2
   button11.show(); // item 3
   button8.show(); // back
-  if (button3.clicked) mode=GAME;
+  button7.show(); // next
+
+   if (button7.clicked) {
+    mode=BANK;
+  }
   if (button8.clicked) mode=SHOP;
   
   //coin value
@@ -67,7 +78,7 @@ void upgrade() {
   //text("Cost: "+bulletCost, 20, 210); 
   //text("Cost: "+xpCost, 20, 210); 
 
-  
+    image(scope,mouseX,mouseY,30,30);
   
   
 }

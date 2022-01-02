@@ -22,7 +22,8 @@ void intro() {
  if (button1.clicked) {
 mode=GAME;
 }
-  
+     image(scope,mouseX,mouseY,30,30);
+ 
 }
 
 
