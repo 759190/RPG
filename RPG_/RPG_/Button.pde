@@ -26,7 +26,7 @@ class Button {
     }
     stroke(black);
     strokeWeight(6);
-    rect(x, y, w, h, 30);
+    rect(x, y, w, h, 2);
 
     //text label
     textAlign(CENTER, CENTER);

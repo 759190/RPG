@@ -1,7 +1,7 @@
 class SniperRifle extends Weapon {
   
   SniperRifle() {
-  super(100,20); //threshold and bullet speed 
+  super(70,20); //threshold and bullet speed 
   }
   
 }
@@ -15,11 +15,11 @@ class AutoPistol extends Weapon {
 class ShotGun extends Weapon {
   
   ShotGun() {
-  super(100,5); //threshold and bullet speed 
+  super(80,5); //threshold and bullet speed 
   }
   void shoot() {
     if (shotTimer>=threshold) {
-     for(int i=0;i<15;i++) {
+     for(int i=0;i<35;i++) {
    PVector aimVector= new PVector(mouseX-myHero.location.x,mouseY-myHero.location.y); 
        aimVector.rotate(random(-PI,PI));
        aimVector.setMag(bulletSpeed);

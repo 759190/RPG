@@ -1,6 +1,10 @@
+
 void game() {
   drawRoom();
   drawGameObjects();
+ if (myHero.hp<=0) mode=GAMEOVER;
+ 
+ if (pkey) mode=SHOP;
 
   
 int i=0;
@@ -9,9 +13,13 @@ int i=0;
     da.show();
     da.act();
       i++;
+   
     
   }
   drawMiniMap();
+     
+ //     click();  
+ //button3.show();
 }
 
 void drawMiniMap() {
@@ -42,7 +50,7 @@ void drawGameObjects() {
   int i=0;
   while(i<myObjects.size()) {
     GameObject obj =myObjects.get(i);
-   if(obj.roomx==myHero.roomx && obj.roomy==myHero.roomy) {
+    if (obj.inRoomWith(myHero)) {
     obj.show();
     obj.act();
    } // --------------- this brace only works if it is there?
@@ -93,4 +101,16 @@ void drawRoom() {
   fill(blue);
   stroke(black);
   rect(width/2,height/2,580,428);
+  tint(#677498);
+
+ image(floor,112,90,300,250);
+  image(floor,388,90,300,250);
+  image(floor,112,262,300,250);
+  image(floor,388,262,300,250);
+
+ tint(255);
+
+  
+  
+
 }
