@@ -50,8 +50,8 @@ void shop() {
   button7.show(); // next
 
 
-  orangeCost=1;
-  whiteCost=1;
+  orangeCost=25;
+  whiteCost=50;
 
   if (button3.clicked) mode=GAME;
   if (button4.clicked ) {
@@ -104,20 +104,18 @@ void shop() {
  
 
 
-  if (myHero.money<orangeCost && boughtOrange==false) {
     noStroke();
-    fill(255);
-    rect(width/2, 151, 90, 25);
+    fill(lightGrey);
+    rect(width/2, 142, 190, 25);
     fill(0);
-    text("Cost: $"+orangeCost, width/2, 150);
-  }
-  if (myHero.money<whiteCost && boughtWhite==false) {
+    text("Cost: $"+orangeCost, width/2, 142);
+  
     noStroke();
-    fill(255);
-    rect(width/2+200, 151, 90, 25);
+    fill(lightGrey);
+    rect(width/2+200, 142, 190, 25);
     fill(0);
-    text("Cost: $"+whiteCost, width/2+200, 150);
-  }
+    text("Cost: $"+whiteCost, width/2+200, 142);
+  
   
   if (boughtOrange==false){
 fill(blue);
@@ -126,7 +124,7 @@ fill(blue);
     textSize(150);
     text("?", width/2+200, 250);
   }
-    image(scope,mouseX,mouseY,30,30);
+   
 
   //rect(width/2,250,195,245);
   // rect(width/2-200,250,195,245);

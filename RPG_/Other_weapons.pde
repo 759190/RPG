@@ -1,7 +1,7 @@
 class SniperRifle extends Weapon {
   
   SniperRifle() {
-  super(7,20); //threshold and bullet speed 
+  super(70,20); //threshold and bullet speed 
   }
   
 }

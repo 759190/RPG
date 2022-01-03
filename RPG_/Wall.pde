@@ -43,22 +43,71 @@ int mTimer;
    
   }
   }
+//-------------------------------------------------------------------
+
+class FinalWall extends Enemy { // shooter
+int wallx, wally;
+int mTimer;
+
+  FinalWall(int rx, int ry) {
+     super(500,80,rx,ry);  //hp, size, roomx, roomy 
+  wallx=width/2;
+  wally=520;
+    
+    location.x=wallx;
+    location.y=wally;
+    mTimer=0;
+    
+    
+   
+  }
+  void show() {
+    fill(lightGrey);
+     if (myHero.purchasedWhiteCat!=1) {
+   rect(wallx,wally,100,10);
+    mTimer++;
+     }
+ 
+
+  }
+  
+  void act() {
+   //super.act();
+   
+   if (myHero.purchasedWhiteCat==0) {
+   // cannot cross blockage and message
+   if (myHero.location.y>490 ) {
+   myHero.location.y=490;  
+     fill(lightGrey);
+  text("You may pass once you have purchased princess cat", width/2, 570);
+ 
+   }
+   }
+   
+   
+   
+  
+   
+  }
+  }
 
 
 //-------------------------------------------------------------------
 
 class Hole extends Enemy { // shooter
 
-  Hole(int rx, int ry) {
-     super(500,80,rx,ry);  //hp, size, roomx, roomy 
-    location.x=200;
-    location.y=200;
+  Hole(float x, float y, int rx, int ry) {
+     super(500,60,rx,ry);  //hp, size, roomx, roomy 
+    location.x=x;
+    location.y=y;
+
     
     
    
   }
   void show() {
-   ellipse(200,200,100,100);
+    fill(black);
+   ellipse(location.x,location.y,80,80);
     
  
 

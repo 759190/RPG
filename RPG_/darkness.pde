@@ -19,6 +19,8 @@ class Darkness {
 
     d=dist(myHero.location.x, myHero.location.y, x, y);
     opacity=map(d, 50, 100, 0, 30);
+    
+
   }
   void act() {
   }

@@ -16,6 +16,7 @@ class Hero extends GameObject {
     coinValue=3;
     damage=0;
     betterxp=0;
+    purchasedWhiteCat=0;
 
     //tint(255,0,0);
     //tint(255,255,255); reset color
@@ -24,6 +25,8 @@ class Hero extends GameObject {
     }
     if (whichCat==2) {
       currentAction = whiteStill;
+            purchasedWhiteCat=1;
+
     }
     if (whichCat==3) {
       currentAction = blackStill;
@@ -59,6 +62,7 @@ class Hero extends GameObject {
       speed=5;
       currentAction = whiteStill;  
       hpMax=200;
+      purchasedWhiteCat=1;
     }
     //black cat
     if (whichCat==3) {
@@ -103,6 +107,8 @@ class Hero extends GameObject {
       }
       if (whichCat==2) {
         currentAction = whiteUp;
+              purchasedWhiteCat=1;
+
       }
       if (whichCat==3) {
         currentAction = blackUp;
@@ -115,6 +121,8 @@ class Hero extends GameObject {
       }
       if (whichCat==2) {
         currentAction = whiteDown;
+              purchasedWhiteCat=1;
+
       }
       if (whichCat==3) {
         currentAction = blackDown;
@@ -129,6 +137,8 @@ class Hero extends GameObject {
       }
       if (whichCat==2) {
         currentAction = whiteLeft;
+              purchasedWhiteCat=1;
+
       }
       if (whichCat==3) {
         currentAction = blackLeft;
@@ -142,6 +152,8 @@ class Hero extends GameObject {
       }
       if (whichCat==2) {
         currentAction = whiteRight;
+              purchasedWhiteCat=1;
+
       }
       if (whichCat==3) {
         currentAction = blackRight;

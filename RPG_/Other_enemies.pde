@@ -160,7 +160,6 @@ class Follower extends Enemy {
     Itimer=180;
     location.x=random(150, 500);
     location.y=random(150, 400);    
-    Itimer=180;
 
     xp=5+myHero.betterxp;
     folSIZE=90;
@@ -170,7 +169,6 @@ class Follower extends Enemy {
     Itimer=180;
        location=new PVector(150, height/2);
 
-    xp=1+myHero.betterxp;
     s=size;
     folSIZE=60;
   }

@@ -78,9 +78,11 @@ roomy=ry;
     if(obj instanceof Hero && isCollidingWith(obj)) {
  hp=0;
    if (randomType==1) {
-   myHero.hp= myHero.hp+10; 
+   myHero.hp= myHero.hp+10;
+
    }else if (randomType==2) {
    myHero.money=myHero.money+myHero.coinValue;
+
    }
   }
     j++;

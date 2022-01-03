@@ -2,7 +2,7 @@ class BouncerShooter extends Enemy { // shooter
  int BStimer;
 
   BouncerShooter(int rx, int ry) {
-     super(1,80,rx,ry);  //hp, size, roomx, roomy 
+     super(500,80,rx,ry);  //hp, size, roomx, roomy 
      BStimer=0;
      //xp=10 +myHero.betterxp;
      location.x=width/2;

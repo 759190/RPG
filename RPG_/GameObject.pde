@@ -11,6 +11,7 @@ class GameObject {
   float speed;
   int damage;
   int betterxp;
+  int purchasedWhiteCat;
   
   GameObject() {
     location=new PVector(width/2,height/2);

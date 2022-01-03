@@ -109,9 +109,7 @@ void drawRoom() {
   image(floor,388,262,300,250);
 
  tint(255);
- imageMode(CENTER);
-  image(scope,mouseX,mouseY,30,30);
-   imageMode(CORNER);
+
   
   
 
